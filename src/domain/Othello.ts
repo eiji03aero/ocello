@@ -34,4 +34,12 @@ export class Othello {
       userTurn: UserTurn.ONE,
     });
   }
+
+  static RandomGame () {
+    return new Othello({
+      board: Board.Random(),
+      gameStatus: GameStatus.PLAYING,
+      userTurn: UserTurn.ONE,
+    });
+  }
 }

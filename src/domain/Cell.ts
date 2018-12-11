@@ -1,30 +1,30 @@
 export enum CellState {
-  BLANK,
-  BLACK,
-  WHITE,
+  Blank = "Blank",
+  Black = "Black",
+  White = "White",
 }
 
 interface CellArgs {
-  state?: CellState;
+  state: CellState;
 }
 
 export class Cell {
   state: CellState;
 
   constructor (args: CellArgs) {
-    this.state = args.state || CellState.BLANK;
+    this.state = args.state || CellState.Blank;
   }
 
   static Blank () {
-    return new Cell({ state: CellState.BLANK });
+    return new Cell({ state: CellState.Blank });
   }
 
   static Black () {
-    return new Cell({ state: CellState.BLACK });
+    return new Cell({ state: CellState.Black });
   }
 
   static White () {
-    return new Cell({ state: CellState.WHITE });
+    return new Cell({ state: CellState.White });
   }
 
   updateState (state: CellState) {
