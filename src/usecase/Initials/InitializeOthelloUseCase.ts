@@ -2,7 +2,7 @@ import { UseCase } from "almin";
 import { Othello } from "../../domain/Othello";
 import othelloRepository, { OthelloRepository } from "../../infra/OthelloRepository";
 
-export class InitializeOthello extends UseCase {
+export class InitializeOthelloUseCase extends UseCase {
   othelloRepository: OthelloRepository;
 
   constructor ({

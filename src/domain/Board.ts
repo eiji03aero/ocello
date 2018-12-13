@@ -2,6 +2,8 @@ import { Cell } from './Cell';
 
 export type BoardCells = Cell[][];
 
+export type DiskCoordinates = [number, number];
+
 export interface BoardArgs {
   data: BoardCells;
 }

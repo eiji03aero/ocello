@@ -5,7 +5,7 @@ import { AlminLogger } from "almin-logger";
 
 import AppLocator from "./AppLocator";
 import { appStoreGroup } from "./store/AppStoreGroup";
-import { InitializeApp } from "./usecase/Initials/InitializeApp";
+import { InitializeAppUseCase } from "./usecase/Initials/InitializeAppUseCase";
 
 import { App } from "./app";
 
@@ -19,7 +19,7 @@ logger.startLogging(appContext);
 AppLocator.context = appContext;
 
 appContext
-  .useCase(InitializeApp.create())
+  .useCase(InitializeAppUseCase.create())
   .execute()
   .then(() => {
     ReactDOM.render(

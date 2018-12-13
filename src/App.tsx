@@ -1,9 +1,11 @@
 import * as React from 'react';
 import * as _ from "lodash";
 import { Context } from "almin";
+
+import { BoardContainer } from "./containers/BoardContainer";
+
 import { appStoreGroup } from "./store/AppStoreGroup";
-import { Board } from "./components/sfcs/Board";
-import { SetRandomBoard } from "./usecase/SetRandomBoard";
+import { SetRandomBoardUseCase } from "./usecase/SetRandomBoardUseCase";
 
 interface Props {
   appContext: Context<typeof appStoreGroup.state>;
@@ -23,7 +25,7 @@ export class App extends React.Component<Props, State> {
     });
 
     setTimeout(() => {
-      this.props.appContext.useCase(SetRandomBoard.create()).execute();
+      this.props.appContext.useCase(SetRandomBoardUseCase.create()).execute();
     }, 2000);
   }
 
@@ -34,7 +36,7 @@ export class App extends React.Component<Props, State> {
       <div>
         <h1>app comes here</h1>
         <p>you will wait for a little bit man</p>
-        <Board data={data} />
+        <BoardContainer data={data} />
       </div>
     );
   }

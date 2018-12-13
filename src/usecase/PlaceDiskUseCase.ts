@@ -1,8 +1,8 @@
 import { UseCase } from "almin";
-import { Othello } from "../domain/Othello";
+import { DiskCoordinates } from "../domain/Board";
 import othelloRepository, { OthelloRepository } from "../infra/OthelloRepository";
 
-export class SetRandomBoard extends UseCase {
+export class PlaceDiskUseCase extends UseCase {
   othelloRepository: OthelloRepository;
 
   constructor ({
@@ -16,8 +16,7 @@ export class SetRandomBoard extends UseCase {
 
   static create () { return new this({ othelloRepository }); }
 
-  execute () {
-    const randomOthello = Othello.RandomGame();
-    this.othelloRepository.save(randomOthello);
+  execute (coords: DiskCoordinates) {
+    console.log(coords);
   }
 }

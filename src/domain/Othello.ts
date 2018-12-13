@@ -1,4 +1,4 @@
-import { Board } from "./Board";
+import { Board, DiskCoordinates } from "./Board";
 
 export enum GameStatus {
   PLAYING,
@@ -41,5 +41,9 @@ export class Othello {
       gameStatus: GameStatus.PLAYING,
       userTurn: UserTurn.ONE,
     });
+  }
+
+  placeDisk (coords: DiskCoordinates) {
+
   }
 }
