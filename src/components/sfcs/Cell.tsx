@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { Disk } from "./Disk";
 
-import { DiskCoordinates } from "../../domain/Board";
+import { CellCoordinates } from "../../domain/Board";
 import { Cell as CellClass } from "../../domain/Cell";
 import { colors } from "../../utils/colors";
 
@@ -17,25 +17,27 @@ const CellStyled = styled.div`
   background-color: ${colors.green};
   border: 1px solid ${colors.black};
 
-  &.Blank {
+  &.placeable {
     &:hover {
       cursor: pointer;
       opacity: .8;
     }
   }
 
-  &.Placed {
+  &.not-placeable {
     &:hover {
       pointer-events: none;
     }
   }
 `;
 
-interface Props {
+export interface Props {
   cell: CellClass;
   rowIndex: number;
   columnIndex: number;
-  onPlaceDisk: (coords: DiskCoordinates) => void;
+  onPlaceDisk: (coords: CellCoordinates) => void;
+
+  placeable: boolean;
 }
 
 export const Cell: React.SFC<Props> = ({
@@ -43,9 +45,12 @@ export const Cell: React.SFC<Props> = ({
   rowIndex,
   columnIndex,
   onPlaceDisk,
+
+  placeable,
 }: Props) => {
+  const classNames = cn(placeable ? 'placeable' : 'not-placeable')
   return (
-    <CellStyled className={cn(cell.state)}
+    <CellStyled className={classNames}
       onClick={(e: React.MouseEvent) => onPlaceDisk([rowIndex, columnIndex])}
     >
       <Disk classNames={cell.color} />

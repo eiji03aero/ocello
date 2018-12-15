@@ -1,5 +1,5 @@
 import { UseCase } from "almin";
-import { DiskCoordinates } from "../domain/Board";
+import { CellCoordinates } from "../domain/Board";
 import othelloRepository, { OthelloRepository } from "../infra/OthelloRepository";
 
 export class PlaceDiskUseCase extends UseCase {
@@ -16,7 +16,7 @@ export class PlaceDiskUseCase extends UseCase {
 
   static create () { return new this({ othelloRepository }); }
 
-  execute (coords: DiskCoordinates) {
+  execute (coords: CellCoordinates) {
     const othello = this.othelloRepository.lastUsed();
     othello.placeDisk(coords);
   }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from "lodash";
 import styled from "styled-components";
 
-import { Board as BoardClass, BoardRow, DiskCoordinates } from "../../domain/Board";
+import { Board as BoardClass, BoardRow } from "../../domain/Board";
 import { Row } from "./Row";
 import { colors } from "../../utils/colors";
 
@@ -13,12 +13,10 @@ const BoardStyled = styled.div`
 
 export interface Props {
   board: BoardClass;
-  onPlaceDisk: (coords: DiskCoordinates) => void;
 }
 
 export const Board: React.SFC<Props> = ({
   board,
-  onPlaceDisk
 } : Props) => {
   return (
     <BoardStyled>
@@ -27,7 +25,6 @@ export const Board: React.SFC<Props> = ({
           key={idx}
           rowIndex={idx}
           row={row}
-          onPlaceDisk={onPlaceDisk}
         />
       ))}
     </BoardStyled>

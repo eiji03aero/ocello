@@ -1,4 +1,4 @@
-import { Board, DiskCoordinates } from "./Board";
+import { Board, CellCoordinates } from "./Board";
 import { Player } from "./Player";
 
 export enum GameStatus {
@@ -41,7 +41,7 @@ export class Othello {
     });
   }
 
-  placeDisk (coords: DiskCoordinates) {
+  placeDisk (coords: CellCoordinates) {
     this.board.placeDisk(coords, this.currentPlayer);
     this.advanceCurrentPlayer();
   }

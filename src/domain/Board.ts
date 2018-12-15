@@ -2,10 +2,11 @@ import * as _ from "lodash";
 
 import { Cell } from './Cell';
 import { Player } from "./Player";
+import { CellManager } from "./CellsManager";
 
 export type BoardRow = Cell[];
 export type BoardCells = BoardRow[];
-export type DiskCoordinates = [number, number];
+export type CellCoordinates = [number, number];
 
 export interface BoardArgs {
   data: BoardCells;
@@ -22,15 +23,34 @@ export class Board {
   static NewGame () { return new Board({ data: this.newGameData }); }
   static Random () { return new Board({ data: this.randomData }); }
 
-  placeDisk (coords: DiskCoordinates, player: Player) {
-    this.data = this.modifyByCoords(coords, (cell: Cell) => {
+  placeDisk (coords: CellCoordinates, player: Player) {
+    if (!this.checkIfPlaceable(coords, player)) return false;
+
+    this.data = this.setCellAt(coords, (cell: Cell) => {
       return Cell.fromColor(player.color);
     });
   }
 
+  checkIfPlaceable (coords: CellCoordinates, player: Player) {
+    player ? 1 + 1 : 1 + 0;
+    const cell = this.getCellAt(coords);
+    if ( _.isNil(cell) || cell.isPlaced) return false;
+
+    return this.isAroundOtherDisk(coords);
+  }
+
   /* -------------------- Private methods -------------------- */
-  private modifyByCoords (
-    coords: DiskCoordinates,
+  private getCellAt (coords: CellCoordinates): Cell {
+    return this.data[coords[0]][coords[1]];
+  }
+
+  private isAroundOtherDisk (coords: CellCoordinates): boolean {
+    const aroundCells = CellManager.getAround(coords);
+    return _.some(aroundCells, (coords: CellCoordinates) => this.getCellAt(coords).isPlaced)
+  }
+
+  private setCellAt (
+    coords: CellCoordinates,
     callback: (cell: Cell) => Cell,
   ): BoardCells {
     return _.map(this.data, (row: BoardRow, ridx: number) => {
