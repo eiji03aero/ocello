@@ -14,7 +14,7 @@ export class BoardContainer extends BaseContainer<Partial<Props>, {}> {
   render () {
     return (
       <Board
-        data={this.props.data}
+        board={this.props.board}
         onPlaceDisk={this.placeDisk}
       />
     );

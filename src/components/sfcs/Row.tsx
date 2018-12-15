@@ -5,29 +5,29 @@ import styled from "styled-components";
 import { Cell } from "./Cell"
 
 import { Cell as CellClass } from "../../domain/Cell";
-import { DiskCoordinates } from "../../domain/Board";
+import { DiskCoordinates, BoardRow } from "../../domain/Board";
 
 const RowStyled = styled.div`
   display: flex;
 `;
 
 interface Props {
-  cells: CellClass[];
+  row: BoardRow;
   rowIndex: number;
   onPlaceDisk: (coords: DiskCoordinates) => void;
 }
 
 export const Row: React.SFC<Props> = ({
-  cells,
+  row,
   rowIndex,
   onPlaceDisk,
 }: Props) => {
   return (
     <RowStyled>
-      { _.map(cells, (cell, idx) => (
+      { _.map(row, (cell: CellClass, idx) => (
         <Cell
           key={idx}
-          state={cell.state}
+          cell={cell}
           rowIndex={rowIndex}
           columnIndex={idx}
           onPlaceDisk={onPlaceDisk}

@@ -2,10 +2,10 @@ import * as React from "react";
 import * as cn from "classnames";
 import styled from "styled-components";
 
-import { RoundDisk } from "./RoundDisk";
+import { Disk } from "./Disk";
 
 import { DiskCoordinates } from "../../domain/Board";
-import { CellState } from "../../domain/Cell";
+import { Cell as CellClass } from "../../domain/Cell";
 import { colors } from "../../utils/colors";
 
 const CellStyled = styled.div`
@@ -17,14 +17,14 @@ const CellStyled = styled.div`
   background-color: ${colors.green};
   border: 1px solid ${colors.black};
 
-  &.can-placed {
+  &.Blank {
     &:hover {
       cursor: pointer;
       opacity: .8;
     }
   }
 
-  &.cannot-placed {
+  &.Placed {
     &:hover {
       pointer-events: none;
     }
@@ -32,28 +32,23 @@ const CellStyled = styled.div`
 `;
 
 interface Props {
-  state: CellState;
+  cell: CellClass;
   rowIndex: number;
   columnIndex: number;
   onPlaceDisk: (coords: DiskCoordinates) => void;
 }
 
 export const Cell: React.SFC<Props> = ({
-  state,
+  cell,
   rowIndex,
   columnIndex,
   onPlaceDisk,
 }: Props) => {
-  const classNames = cn({
-    'can-placed': state === CellState.Blank,
-    'cannot-placed': state !== CellState.Blank,
-  });
-
   return (
-    <CellStyled className={classNames}
+    <CellStyled className={cn(cell.state)}
       onClick={(e: React.MouseEvent) => onPlaceDisk([rowIndex, columnIndex])}
     >
-      <RoundDisk classNames={[state]} />
+      <Disk classNames={cell.color} />
     </CellStyled>
   );
 };

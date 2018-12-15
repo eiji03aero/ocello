@@ -17,6 +17,7 @@ export class PlaceDiskUseCase extends UseCase {
   static create () { return new this({ othelloRepository }); }
 
   execute (coords: DiskCoordinates) {
-    console.log(coords);
+    const othello = this.othelloRepository.lastUsed();
+    othello.placeDisk(coords);
   }
 }

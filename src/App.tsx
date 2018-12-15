@@ -5,7 +5,6 @@ import { Context } from "almin";
 import { BoardContainer } from "./containers/BoardContainer";
 
 import { appStoreGroup } from "./store/AppStoreGroup";
-import { SetRandomBoardUseCase } from "./usecase/SetRandomBoardUseCase";
 
 interface Props {
   appContext: Context<typeof appStoreGroup.state>;
@@ -23,20 +22,16 @@ export class App extends React.Component<Props, State> {
     this.props.appContext.onChange(() => {
       this.setState(this.props.appContext.getState());
     });
-
-    setTimeout(() => {
-      this.props.appContext.useCase(SetRandomBoardUseCase.create()).execute();
-    }, 2000);
   }
 
   render () {
-    const { data } = this.state.othello.board;
+    const { board } = this.state.othello;
 
     return (
       <div>
         <h1>app comes here</h1>
         <p>you will wait for a little bit man</p>
-        <BoardContainer data={data} />
+        <BoardContainer board={board} />
       </div>
     );
   }

@@ -1,21 +1,25 @@
 import { Board } from "../../domain/Board";
-import { Othello, GameStatus, UserTurn } from "../../domain/Othello";
+import { Othello, GameStatus } from "../../domain/Othello";
+import { Player } from "../../domain/Player";
 
 export interface OthelloStateArgs {
   board: Board;
   gameStatus: GameStatus;
-  userTurn: UserTurn;
+  players: Player[];
+  currentPlayer: Player;
 }
 
 export class OthelloState {
   board: Board;
   gameStatus: GameStatus;
-  userTurn: UserTurn;
+  players: Player[];
+  currentPlayer: Player;
 
   constructor (args: OthelloStateArgs) {
     this.board = args.board;
     this.gameStatus = args.gameStatus;
-    this.userTurn = args.userTurn;
+    this.players = args.players;
+    this.currentPlayer = args.currentPlayer;
   }
 
   merge (othello: Othello) {
@@ -27,11 +31,6 @@ export class OthelloState {
 
   reduce (payload: any) {
     switch (payload.type) {
-      case "UPDATE_BOARD":
-        return new OthelloState({
-          ...(this as OthelloStateArgs),
-        });
-
       default:
         return this;
     }

@@ -4,14 +4,11 @@ import styled from "styled-components";
 
 import { colors } from "../../utils/colors";
 
-const RoundDiskStyled = styled.div`
+const DiskStyled = styled.div`
   width: 85%;
   height: 85%;
   border-radius: 50%;
-
-  &.Blank {
-    background-color: transparent;
-  }
+  background-color: transparent;
 
   &.Black {
     background-color: ${colors.black};
@@ -23,14 +20,14 @@ const RoundDiskStyled = styled.div`
 `;
 
 interface Props {
-  classNames: string[];
+  classNames: any;
 }
 
-export const RoundDisk: React.SFC<Props> = ({
+export const Disk: React.SFC<Props> = ({
   classNames,
 }: Props) => {
   return (
-    <RoundDiskStyled
+    <DiskStyled
       className={cn(classNames)}
     />
   );

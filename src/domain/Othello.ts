@@ -1,37 +1,35 @@
 import { Board, DiskCoordinates } from "./Board";
+import { Player } from "./Player";
 
 export enum GameStatus {
   PLAYING,
   FINISHED,
 }
 
-export enum UserTurn {
-  ONE,
-  TWO,
-}
-
 export interface OthelloArgs {
   board: Board;
   gameStatus: GameStatus;
-  userTurn: UserTurn;
+  players: Player[];
 }
 
 export class Othello {
   board: Board;
   gameStatus: GameStatus;
-  userTurn: UserTurn;
+  players: Player[];
+  currentPlayer: Player;
 
   constructor (args: OthelloArgs) {
     this.board = args.board;
     this.gameStatus = args.gameStatus;
-    this.userTurn = args.userTurn;
+    this.players = args.players;
+    this.currentPlayer = args.players[0];
   }
 
   static NewGame () {
     return new Othello({
-      board: Board.Blank(),
+      board: Board.NewGame(),
       gameStatus: GameStatus.PLAYING,
-      userTurn: UserTurn.ONE,
+      players: [Player.Black(), Player.White()],
     });
   }
 
@@ -39,11 +37,19 @@ export class Othello {
     return new Othello({
       board: Board.Random(),
       gameStatus: GameStatus.PLAYING,
-      userTurn: UserTurn.ONE,
+      players: [Player.Black(), Player.White()],
     });
   }
 
   placeDisk (coords: DiskCoordinates) {
+    this.board.placeDisk(coords, this.currentPlayer);
+    this.advanceCurrentPlayer();
+  }
 
+  /* -------------------- Private methods -------------------- */
+  private advanceCurrentPlayer () {
+    this.currentPlayer = this.currentPlayer === this.players[0]
+      ? this.players[1]
+      : this.players[0];
   }
 }
