@@ -20,7 +20,7 @@ export const Board: React.SFC<Props> = ({
 } : Props) => {
   return (
     <BoardStyled>
-      { _.map(board.data, (row: BoardRow, idx: number) => (
+      { _.map(board.cells, (row: BoardRow, idx: number) => (
         <Row
           key={idx}
           rowIndex={idx}

@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import { CellCoordinates } from "./Board";
+import { CellCoordinates, BoardCells } from "./Board";
 
 export class CellManager {
   static LowerEnd = 0;
@@ -24,5 +24,9 @@ export class CellManager {
         CellManager.HigherEnd >= cand[1]
       );
     });
+  }
+
+  static checkIfPlaceable (coords: CellCoordinates, data: BoardCells) {
+    return true
   }
 }

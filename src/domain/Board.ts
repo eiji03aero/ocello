@@ -9,25 +9,27 @@ export type BoardCells = BoardRow[];
 export type CellCoordinates = [number, number];
 
 export interface BoardArgs {
-  data: BoardCells;
+  cells: BoardCells;
 }
 
 export class Board {
-  data: BoardCells;
+  cells: BoardCells;
 
   constructor (args: BoardArgs) {
-    this.data = args.data;
+    this.cells = args.cells;
   }
 
-  static Blank () { return new Board({ data: this.defaultData }); }
-  static NewGame () { return new Board({ data: this.newGameData }); }
-  static Random () { return new Board({ data: this.randomData }); }
+  static Blank () { return new Board({ cells: this.defaultCells }); }
+  static NewGame () { return new Board({ cells: this.newGameCells }); }
+  static Random () { return new Board({ cells: this.randomCells }); }
 
   placeDisk (coords: CellCoordinates, player: Player) {
     if (!this.checkIfPlaceable(coords, player)) return false;
 
-    this.data = this.setCellAt(coords, (cell: Cell) => {
-      return Cell.fromColor(player.color);
+    this.cells = this.mapCells((cell: Cell, ridx: number, cidx: number) => {
+      return coords[0] === ridx && coords[1] === cidx
+        ? Cell.fromColor(player.color)
+        : cell;
     });
   }
 
@@ -36,42 +38,32 @@ export class Board {
     const cell = this.getCellAt(coords);
     if ( _.isNil(cell) || cell.isPlaced) return false;
 
-    return this.isAroundOtherDisk(coords);
+    return CellManager.checkIfPlaceable(coords, this.cells);
   }
 
   /* -------------------- Private methods -------------------- */
   private getCellAt (coords: CellCoordinates): Cell {
-    return this.data[coords[0]][coords[1]];
+    return this.cells[coords[0]][coords[1]];
   }
 
-  private isAroundOtherDisk (coords: CellCoordinates): boolean {
-    const aroundCells = CellManager.getAround(coords);
-    return _.some(aroundCells, (coords: CellCoordinates) => this.getCellAt(coords).isPlaced)
-  }
-
-  private setCellAt (
-    coords: CellCoordinates,
-    callback: (cell: Cell) => Cell,
+  private mapCells (
+    callback: (cell: Cell, ridx: number, cidx: number) => Cell,
   ): BoardCells {
-    return _.map(this.data, (row: BoardRow, ridx: number) => {
-      return ridx === coords[0]
-        ? _.map(row, (cell: Cell, cidx: number) => {
-          return cidx === coords[1]
-            ? callback(cell)
-            : cell;
-        })
-        : row
+    return _.map(this.cells, (row: BoardRow, ridx: number) => {
+      return _.map(row, (cell: Cell, cidx: number) => {
+        return callback(cell, ridx, cidx);
+      });
     });
   }
 
-  private static get defaultData () {
-    return this.buildData((ridx: number, cidx: number) => {
+  private static get defaultCells () {
+    return this.buildCells((ridx: number, cidx: number) => {
       return Cell.Blank();
     });
   }
 
-  private static get newGameData () {
-    return this.buildData((ridx: number, cidx: number) => {
+  private static get newGameCells () {
+    return this.buildCells((ridx: number, cidx: number) => {
       return (
         (ridx === 3 && cidx === 3) ? Cell.Black() :
         (ridx === 4 && cidx === 4) ? Cell.Black() :
@@ -82,8 +74,8 @@ export class Board {
     });
   }
 
-  private static get randomData () {
-    return this.buildData((ridx: number, cidx: number) => {
+  private static get randomCells () {
+    return this.buildCells((ridx: number, cidx: number) => {
       const rand = Math.floor(Math.random() * 3);
       return (
         rand === 0 ? Cell.Blank() :
@@ -93,7 +85,7 @@ export class Board {
     });
   }
 
-  private static buildData (func: (ri: number, ci: number) => Cell): BoardCells {
+  private static buildCells (func: (ri: number, ci: number) => Cell): BoardCells {
     return new Array(8).fill(0).map((row, ridx) => {
       return new Array(8).fill(0).map((col, cidx) => {
         return func(ridx, cidx);
