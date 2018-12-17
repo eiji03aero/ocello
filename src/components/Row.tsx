@@ -2,10 +2,10 @@ import * as React from "react";
 import * as _ from "lodash";
 import styled from "styled-components";
 
-import { CellContainer } from "../../containers/CellContainer"
+import { CellContainer } from "../containers/CellContainer"
 
-import { Cell as CellClass } from "../../domain/Cell";
-import { BoardRow } from "../../domain/Board";
+import { Cell as CellClass } from "../domain/Cell";
+import { BoardRow } from "../domain/Board";
 
 const RowStyled = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Cell, Props } from "../components/sfcs/Cell";
+import { Cell, Props } from "../components/Cell";
 
 import { BaseContainer } from "./BaseContainer";
 import { CellCoordinates } from "../domain/Board";

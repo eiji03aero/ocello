@@ -2,7 +2,7 @@ import * as React from "react";
 import * as cn from "classnames";
 import styled from "styled-components";
 
-import { colors } from "../../utils/colors";
+import { colors } from "../utils/colors";
 
 const DiskStyled = styled.div`
   width: 85%;

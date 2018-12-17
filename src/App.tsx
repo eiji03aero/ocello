@@ -1,10 +1,17 @@
 import * as React from 'react';
 import * as _ from "lodash";
+import styled from "styled-components";
 import { Context } from "almin";
 
 import { BoardContainer } from "./containers/BoardContainer";
+import { GameStatusContainer } from "./containers/GameStatusContainer";
 
 import { appStoreGroup } from "./store/AppStoreGroup";
+
+const AppStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 interface Props {
   appContext: Context<typeof appStoreGroup.state>;
@@ -25,14 +32,22 @@ export class App extends React.Component<Props, State> {
   }
 
   render () {
-    const { board } = this.state.othello;
+    const {
+      board,
+      currentPlayer,
+      boardStatus,
+    } = this.state.othello;
 
     return (
-      <div>
-        <h1>app comes here</h1>
-        <p>you will wait for a little bit man</p>
-        <BoardContainer board={board} />
-      </div>
+      <AppStyled>
+        <BoardContainer
+          board={board}
+        />
+        <GameStatusContainer
+          currentPlayer={currentPlayer}
+          boardStatus={boardStatus}
+        />
+      </AppStyled>
     );
   }
 }

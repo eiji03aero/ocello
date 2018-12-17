@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Board, Props } from "../components/sfcs/Board";
+import { Board, Props } from "../components/Board";
 
 import { BaseContainer } from "./BaseContainer";
 

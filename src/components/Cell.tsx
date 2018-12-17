@@ -4,9 +4,9 @@ import styled from "styled-components";
 
 import { Disk } from "./Disk";
 
-import { CellCoordinates } from "../../domain/Board";
-import { Cell as CellClass } from "../../domain/Cell";
-import { colors } from "../../utils/colors";
+import { CellCoordinates } from "../domain/Board";
+import { Cell as CellClass } from "../domain/Cell";
+import { colors } from "../utils/colors";
 
 const CellStyled = styled.div`
   display: flex;

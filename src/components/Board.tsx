@@ -4,8 +4,8 @@ import styled from "styled-components";
 
 import { Row } from "./Row";
 
-import { Board as BoardClass, BoardRow } from "../../domain/Board";
-import { colors } from "../../utils/colors";
+import { Board as BoardClass, BoardRow } from "../domain/Board";
+import { colors } from "../utils/colors";
 
 const BoardStyled = styled.div`
   display: inline-block;

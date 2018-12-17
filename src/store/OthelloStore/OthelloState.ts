@@ -1,4 +1,4 @@
-import { Board } from "../../domain/Board";
+import { Board, BoardStatus } from "../../domain/Board";
 import { Othello, GameStatus } from "../../domain/Othello";
 import { Player } from "../../domain/Player";
 
@@ -14,12 +14,14 @@ export class OthelloState {
   gameStatus: GameStatus;
   players: Player[];
   currentPlayer: Player;
+  boardStatus: BoardStatus;
 
   constructor (args: OthelloStateArgs) {
     this.board = args.board;
     this.gameStatus = args.gameStatus;
     this.players = args.players;
     this.currentPlayer = args.currentPlayer;
+    this.boardStatus = this.board.getBoardStatus();
   }
 
   merge (othello: Othello) {

@@ -3,8 +3,8 @@ import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 
 import { Cell } from "./Cell";
-import { Cell as CellClass } from "../../domain/Cell";
-import { CellCoordinates } from "../../domain/Board";
+import { Cell as CellClass } from "../domain/Cell";
+import { CellCoordinates } from "../domain/Board";
 
 describe('Board', () => {
   const blankCell = CellClass.Blank();

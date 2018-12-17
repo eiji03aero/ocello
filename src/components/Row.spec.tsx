@@ -2,15 +2,16 @@ import * as React from "react";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 
-import { Board } from "./Board";
-import { Board as BoardClass } from "../../domain/Board";
+import { Row } from "./Row";
+import { Cell } from "../domain/Cell";
 
-describe('Board', () => {
+describe('Row', () => {
   it('matches snapshot', () => {
-    const board = BoardClass.NewGame();
+    const row = new Array(8).fill(0).map((_: number) => Cell.Blank());
     const wrapper = shallow(
-      <Board
-        board={board}
+      <Row
+        row={row}
+        rowIndex={0}
       />
     );
 

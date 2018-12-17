@@ -1,11 +1,17 @@
 import * as _ from "lodash";
 
-import { Cell } from './Cell';
+import { Cell, CellState } from './Cell';
+import { DiskColors } from "./Disk";
 import { Player } from "./Player";
 
 export type BoardRow = Cell[];
 export type BoardCells = BoardRow[];
 export type CellCoordinates = number[];
+export type BoardStatusArg = CellState.Blank | DiskColors.Black | DiskColors.White;
+
+export type BoardStatus = {
+  [K in BoardStatusArg]: number;
+}
 
 export interface BoardArgs {
   cells: BoardCells;
@@ -29,6 +35,15 @@ export class Board {
     this.cells = args.cells;
   }
 
+  checkIfPlaceable (coords: CellCoordinates, player: Player) {
+    const cell = this.getCellAt(coords);
+    if ( _.isNil(cell) || cell.isPlaced) return false;
+
+    const disksToBeTurned = this.computeCoordsToBeTurned(coords, player);
+
+    return disksToBeTurned.length > 0;
+  }
+
   placeDisk (coords: CellCoordinates, player: Player) {
     if (!this.checkIfPlaceable(coords, player)) return false;
 
@@ -42,16 +57,33 @@ export class Board {
     });
   }
 
-  checkIfPlaceable (coords: CellCoordinates, player: Player) {
-    const cell = this.getCellAt(coords);
-    if ( _.isNil(cell) || cell.isPlaced) return false;
-
-    const disksToBeTurned = this.computeCoordsToBeTurned(coords, player);
-
-    return disksToBeTurned.length > 0;
+  getBoardStatus () {
+    return _.reduce(this.allCells, (bs: BoardStatus, cell: Cell) => {
+      if (cell.color === DiskColors.Black) {
+        bs[DiskColors.Black] += 1;
+      }
+      else if (cell.color === DiskColors.White) {
+        bs[DiskColors.White] += 1;
+      }
+      else {
+        bs[CellState.Blank] += 1;
+      }
+      return bs;
+    }, this.blankBoardStatus);
   }
 
   /* -------------------- Private methods -------------------- */
+  private get allCells () {
+    return _.flatten(this.cells);
+  }
+
+  private get blankBoardStatus () {
+    return {
+      [CellState.Blank]: 0,
+      [DiskColors.Black]: 0,
+      [DiskColors.White]: 0,
+    };
+  }
   private getCellAt (coords: CellCoordinates): Cell {
     return this.cells[coords[0]][coords[1]];
   }
