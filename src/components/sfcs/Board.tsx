@@ -2,8 +2,9 @@ import * as React from 'react';
 import * as _ from "lodash";
 import styled from "styled-components";
 
-import { Board as BoardClass, BoardRow } from "../../domain/Board";
 import { Row } from "./Row";
+
+import { Board as BoardClass, BoardRow } from "../../domain/Board";
 import { colors } from "../../utils/colors";
 
 const BoardStyled = styled.div`

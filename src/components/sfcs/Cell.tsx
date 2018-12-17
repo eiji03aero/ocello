@@ -49,9 +49,15 @@ export const Cell: React.SFC<Props> = ({
   placeable,
 }: Props) => {
   const classNames = cn(placeable ? 'placeable' : 'not-placeable')
+  const onClickHandler = (e: React.MouseEvent) => {
+    if (placeable) {
+      onPlaceDisk([rowIndex, columnIndex]);
+    }
+  }
+
   return (
     <CellStyled className={classNames}
-      onClick={(e: React.MouseEvent) => onPlaceDisk([rowIndex, columnIndex])}
+      onClick={onClickHandler}
     >
       <Disk classNames={cell.color} />
     </CellStyled>

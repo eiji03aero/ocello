@@ -29,7 +29,7 @@
     "dist",
     "webpack.*"
   ],
-  "include": ["./types/global.d.ts"]
+  "include": ["./types/global.d.ts"],
 
 
   /* Basic Options */

@@ -1,0 +1,334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board matches snapshot 1`] = `
+<styled.div>
+  <Component
+    key="0"
+    row={
+      Array [
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+      ]
+    }
+    rowIndex={0}
+  />
+  <Component
+    key="1"
+    row={
+      Array [
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+      ]
+    }
+    rowIndex={1}
+  />
+  <Component
+    key="2"
+    row={
+      Array [
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+      ]
+    }
+    rowIndex={2}
+  />
+  <Component
+    key="3"
+    row={
+      Array [
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": Disk {
+            "color": "Black",
+          },
+          "state": "Placed",
+        },
+        Cell {
+          "disk": Disk {
+            "color": "White",
+          },
+          "state": "Placed",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+      ]
+    }
+    rowIndex={3}
+  />
+  <Component
+    key="4"
+    row={
+      Array [
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": Disk {
+            "color": "White",
+          },
+          "state": "Placed",
+        },
+        Cell {
+          "disk": Disk {
+            "color": "Black",
+          },
+          "state": "Placed",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+      ]
+    }
+    rowIndex={4}
+  />
+  <Component
+    key="5"
+    row={
+      Array [
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+      ]
+    }
+    rowIndex={5}
+  />
+  <Component
+    key="6"
+    row={
+      Array [
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+      ]
+    }
+    rowIndex={6}
+  />
+  <Component
+    key="7"
+    row={
+      Array [
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+        Cell {
+          "disk": null,
+          "state": "Blank",
+        },
+      ]
+    }
+    rowIndex={7}
+  />
+</styled.div>
+`;

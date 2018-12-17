@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board should match snapshot 1`] = `
+<styled.div
+  className="placeable"
+  onClick={[Function]}
+>
+  <Component
+    classNames=""
+  />
+</styled.div>
+`;

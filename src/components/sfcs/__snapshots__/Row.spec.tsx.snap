@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Row matches snapshot 1`] = `
+<styled.div>
+  <CellContainer
+    cell={
+      Cell {
+        "disk": null,
+        "state": "Blank",
+      }
+    }
+    columnIndex={0}
+    key="0"
+    rowIndex={0}
+  />
+  <CellContainer
+    cell={
+      Cell {
+        "disk": null,
+        "state": "Blank",
+      }
+    }
+    columnIndex={1}
+    key="1"
+    rowIndex={0}
+  />
+  <CellContainer
+    cell={
+      Cell {
+        "disk": null,
+        "state": "Blank",
+      }
+    }
+    columnIndex={2}
+    key="2"
+    rowIndex={0}
+  />
+  <CellContainer
+    cell={
+      Cell {
+        "disk": null,
+        "state": "Blank",
+      }
+    }
+    columnIndex={3}
+    key="3"
+    rowIndex={0}
+  />
+  <CellContainer
+    cell={
+      Cell {
+        "disk": null,
+        "state": "Blank",
+      }
+    }
+    columnIndex={4}
+    key="4"
+    rowIndex={0}
+  />
+  <CellContainer
+    cell={
+      Cell {
+        "disk": null,
+        "state": "Blank",
+      }
+    }
+    columnIndex={5}
+    key="5"
+    rowIndex={0}
+  />
+  <CellContainer
+    cell={
+      Cell {
+        "disk": null,
+        "state": "Blank",
+      }
+    }
+    columnIndex={6}
+    key="6"
+    rowIndex={0}
+  />
+  <CellContainer
+    cell={
+      Cell {
+        "disk": null,
+        "state": "Blank",
+      }
+    }
+    columnIndex={7}
+    key="7"
+    rowIndex={0}
+  />
+</styled.div>
+`;
