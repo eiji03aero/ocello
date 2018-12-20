@@ -17,12 +17,14 @@ export class Othello {
   gameStatus: GameStatus;
   players: Player[];
   currentPlayer: Player;
+  lastPlayer: Player;
 
   constructor (args: OthelloArgs) {
     this.board = args.board;
     this.gameStatus = args.gameStatus;
     this.players = args.players;
     this.currentPlayer = args.players[0];
+    this.lastPlayer = args.players[1];
   }
 
   static NewGame () {
@@ -48,6 +50,7 @@ export class Othello {
 
   /* -------------------- Private methods -------------------- */
   private advanceCurrentPlayer () {
+    this.lastPlayer = this.currentPlayer;
     this.currentPlayer = this.currentPlayer === this.players[0]
       ? this.players[1]
       : this.players[0];

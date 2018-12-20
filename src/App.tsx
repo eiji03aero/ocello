@@ -5,12 +5,19 @@ import { Context } from "almin";
 
 import { BoardContainer } from "./containers/BoardContainer";
 import { GameStatusContainer } from "./containers/GameStatusContainer";
+import { Logger } from "./components/Logger";
 
 import { appStoreGroup } from "./store/AppStoreGroup";
 
 const AppStyled = styled.div`
   display: flex;
-  flex-direction: column;
+
+  .main {}
+  .side { flex: 1; }
+
+  .main + .side {
+    margin-left: 1rem;
+  }
 `;
 
 interface Props {
@@ -38,15 +45,24 @@ export class App extends React.Component<Props, State> {
       boardStatus,
     } = this.state.othello;
 
+    const {
+      logs,
+    } = this.state.logger;
+
     return (
       <AppStyled>
-        <BoardContainer
-          board={board}
-        />
-        <GameStatusContainer
-          currentPlayer={currentPlayer}
-          boardStatus={boardStatus}
-        />
+        <div className="main">
+          <BoardContainer
+            board={board}
+          />
+          <GameStatusContainer
+            currentPlayer={currentPlayer}
+            boardStatus={boardStatus}
+          />
+        </div>
+        <div className="side">
+          <Logger logs={logs} />
+        </div>
       </AppStyled>
     );
   }

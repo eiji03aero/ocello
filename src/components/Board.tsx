@@ -8,7 +8,6 @@ import { Board as BoardClass, BoardRow } from "../domain/Board";
 import { colors } from "../utils/colors";
 
 const BoardStyled = styled.div`
-  display: inline-block;
   border: 1px solid ${colors.black};
 `;
 
