@@ -12,8 +12,7 @@ const CellStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
+  flex: 1;
   background-color: ${colors.green};
   border: 1px solid ${colors.black};
 

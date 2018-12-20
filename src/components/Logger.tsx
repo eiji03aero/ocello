@@ -16,6 +16,10 @@ const LoggerStyled = styled.div`
     border-top: 1px solid ${colors.blueGrey};
     border-bottom: 1px solid ${colors.blueGrey};
   }
+
+  @media only screen and (min-width: 768px) {
+    max-width: 450px;
+  }
 `;
 
 interface Props {

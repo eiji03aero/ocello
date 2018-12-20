@@ -11,12 +11,21 @@ import { appStoreGroup } from "./store/AppStoreGroup";
 
 const AppStyled = styled.div`
   display: flex;
+  flex-direction: row;
 
   .main {}
   .side { flex: 1; }
 
   .main + .side {
     margin-left: 1rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    .main + .side {
+      margin-top: 1rem;
+      margin-left: 0;
+    }
   }
 `;
 

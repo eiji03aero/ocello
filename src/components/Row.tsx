@@ -9,6 +9,7 @@ import { BoardRow } from "../domain/Board";
 
 const RowStyled = styled.div`
   display: flex;
+  flex: 1;
 `;
 
 interface Props {

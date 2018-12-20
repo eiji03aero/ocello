@@ -8,7 +8,19 @@ import { Board as BoardClass, BoardRow } from "../domain/Board";
 import { colors } from "../utils/colors";
 
 const BoardStyled = styled.div`
+  display: flex;
+  flex-direction: column;
   border: 1px solid ${colors.black};
+
+  @media only screen and (max-width: 767px) {
+    width: 95vw;
+    height: 95vw;
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 50vw;
+    height: 50vw;
+  }
 `;
 
 export interface Props {
