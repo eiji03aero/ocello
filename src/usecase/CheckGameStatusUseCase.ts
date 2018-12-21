@@ -1,10 +1,8 @@
 import { UseCase } from "almin";
-import { CellCoordinates } from "../domain/Board";
 import othelloRepository, { OthelloRepository } from "../infra/OthelloRepository";
 import loggerRepository, { LoggerRepository } from "../infra/LoggerRepository";
-import { CheckGameStatusUseCase } from "./CheckGameStatusUseCase";
 
-export class PlaceDiskUseCase extends UseCase {
+export class CheckGameStatusUseCase extends UseCase {
   othelloRepository: OthelloRepository;
   loggerRepository: LoggerRepository;
 
@@ -22,11 +20,12 @@ export class PlaceDiskUseCase extends UseCase {
 
   static create () { return new this({ othelloRepository, loggerRepository }); }
 
-  execute (coords: CellCoordinates) {
+  execute () {
     const othello = this.othelloRepository.lastUsed();
     const logger = this.loggerRepository.lastUsed();
-    othello.placeDisk(coords);
-    logger.log(`Player ${othello.lastPlayer.color} put disk on coords [${coords[0]}, ${coords[1]}]`);
-    this.context.useCase(CheckGameStatusUseCase.create()).execute();
+    if (!othello.canPlayerPlaceDisk()) {
+      logger.warn(`Player ${othello.currentPlayer.color} cannot put disk any where`);
+      this.dispatch({ type: 'ENABLE_SKIP_TURN' });
+    }
   }
 }

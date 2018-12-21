@@ -22,11 +22,15 @@ const GameStatusStyled = styled.div`
 export interface Props {
   currentPlayer: Player;
   boardStatus: BoardStatus;
+  canSkip: boolean;
+  onSkipTurn: (e: React.SyntheticEvent) => void;
 }
 
 export const GameStatus: React.SFC<Props> = ({
   currentPlayer,
   boardStatus,
+  canSkip,
+  onSkipTurn,
 }: Props) => {
   return (
     <GameStatusStyled>
@@ -42,6 +46,11 @@ export const GameStatus: React.SFC<Props> = ({
       <span className="box">
         Blank: {boardStatus.Blank}
       </span>
+      { canSkip && (
+        <button onClick={onSkipTurn}>
+          Skip turn
+        </button>
+      )}
     </GameStatusStyled>
   );
 };

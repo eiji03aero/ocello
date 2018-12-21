@@ -57,6 +57,16 @@ export class Board {
     });
   }
 
+  canPlayerPlaceDisk (player: Player) {
+    let cellToPlace = 0;
+    this.mapCells((cell: Cell, ridx: number, cidx: number) => {
+      if (this.checkIfPlaceable([ridx, cidx], player)) cellToPlace += 1;
+      return cell;
+    });
+
+    return cellToPlace > 0;
+  }
+
   getBoardStatus () {
     return _.reduce(this.allCells, (bs: BoardStatus, cell: Cell) => {
       if (cell.color === DiskColors.Black) {
@@ -188,7 +198,7 @@ export class Board {
       return (
         (ridx === 3 && cidx === 3) ? Cell.Black() :
         (ridx === 4 && cidx === 4) ? Cell.Black() :
-        (ridx === 3 && cidx === 4) ? Cell.White() :
+        (ridx === 3 && cidx === 4) ? Cell.Black() :
         (ridx === 4 && cidx === 3) ? Cell.White() :
         Cell.Blank()
       );

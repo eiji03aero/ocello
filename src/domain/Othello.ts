@@ -48,6 +48,14 @@ export class Othello {
     this.advanceCurrentPlayer();
   }
 
+  canPlayerPlaceDisk () {
+    return this.board.canPlayerPlaceDisk(this.currentPlayer);
+  }
+
+  skipTurn () {
+    this.advanceCurrentPlayer();
+  }
+
   /* -------------------- Private methods -------------------- */
   private advanceCurrentPlayer () {
     this.lastPlayer = this.currentPlayer;

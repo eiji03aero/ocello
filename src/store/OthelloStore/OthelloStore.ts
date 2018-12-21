@@ -1,7 +1,6 @@
 import { DispatchedPayload, Store } from "almin";
 
-import { OthelloState, OthelloStateArgs } from "./OthelloState";
-import { Othello } from "../../domain/Othello";
+import { OthelloState } from "./OthelloState";
 import { OthelloRepository } from "../../infra/OthelloRepository";
 
 export class OthelloStore extends Store {
@@ -14,7 +13,7 @@ export class OthelloStore extends Store {
   }) {
     super();
     this.othelloRepository = othelloRepository;
-    this.state = new OthelloState({ ...(Othello.NewGame() as OthelloStateArgs) });
+    this.state = OthelloState.create();
   }
 
   receivePayload (payload: DispatchedPayload) {
