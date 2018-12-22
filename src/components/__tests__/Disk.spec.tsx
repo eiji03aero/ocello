@@ -2,15 +2,13 @@ import * as React from "react";
 import { shallow } from "enzyme";
 import toJson from "enzyme-to-json";
 
-import { Board } from "./Board";
-import { Board as BoardClass } from "../domain/Board";
+import { Disk } from "../Disk";
 
-describe('Board', () => {
+describe('Disk', () => {
   it('matches snapshot', () => {
-    const board = BoardClass.NewGame();
     const wrapper = shallow(
-      <Board
-        board={board}
+      <Disk
+        classNames={'Black'}
       />
     );
 

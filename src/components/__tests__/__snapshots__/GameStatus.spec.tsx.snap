@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameStatus matches snapshot 1`] = `
+<styled.div>
+  <span
+    className="box"
+  >
+    Current player: 
+    Black
+  </span>
+  <span
+    className="box"
+  >
+    Black: 
+    2
+  </span>
+  <span
+    className="box"
+  >
+    White: 
+    2
+  </span>
+  <span
+    className="box"
+  >
+    Blank: 
+    60
+  </span>
+  <button
+    onClick={[Function]}
+  >
+    New game
+  </button>
+  <button
+    disabled={true}
+    onClick={[Function]}
+  >
+    Skip turn
+  </button>
+</styled.div>
+`;

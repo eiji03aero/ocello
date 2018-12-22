@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logger matches snapshot 1`] = `
+<styled.div>
+  <div
+    className="row Log"
+    key="0"
+  >
+    16:42
+    <span
+      style={
+        Object {
+          "marginLeft": 16,
+        }
+      }
+    />
+    test
+  </div>
+</styled.div>
+`;
