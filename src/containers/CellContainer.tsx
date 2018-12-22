@@ -11,7 +11,7 @@ export class CellContainer extends BaseContainer<Partial<Props>, {}> {
   checkIfPlaceable = () => {
     const { rowIndex, columnIndex } = this.props;
     const { board, currentPlayer } = appLocator.state.othello;
-    return board.checkIfPlaceable([rowIndex, columnIndex] as CellCoordinates, currentPlayer)
+    return board.checkIfPlaceable([rowIndex, columnIndex] as CellCoordinates, currentPlayer.color)
   }
 
   placeDisk = (coords: CellCoordinates) => {

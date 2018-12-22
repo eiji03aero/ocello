@@ -2,7 +2,6 @@ import * as _ from "lodash";
 
 import { Cell, CellState } from './Cell';
 import { DiskColors } from "./Disk";
-import { Player } from "./Player";
 
 export type BoardRow = Cell[];
 export type BoardCells = BoardRow[];
@@ -35,32 +34,32 @@ export class Board {
     this.cells = args.cells;
   }
 
-  checkIfPlaceable (coords: CellCoordinates, player: Player) {
+  checkIfPlaceable (coords: CellCoordinates, color: DiskColors) {
     const cell = this.getCellAt(coords);
     if ( _.isNil(cell) || cell.isPlaced) return false;
 
-    const disksToBeTurned = this.computeCoordsToBeTurned(coords, player);
+    const disksToBeTurned = this.computeCoordsToBeTurned(coords, color);
 
     return disksToBeTurned.length > 0;
   }
 
-  placeDisk (coords: CellCoordinates, player: Player) {
-    if (!this.checkIfPlaceable(coords, player)) return false;
+  placeDisk (coords: CellCoordinates, color: DiskColors) {
+    if (!this.checkIfPlaceable(coords, color)) return false;
 
-    const coordsToBeTurned = this.computeCoordsToBeTurned(coords, player);
+    const coordsToBeTurned = this.computeCoordsToBeTurned(coords, color);
     const allCoordsToBeTurned = _.concat(coordsToBeTurned, [ coords ]);
 
     this.cells = this.mapCells((cell: Cell, ridx: number, cidx: number) => {
       return this.includesCoords(allCoordsToBeTurned, [ridx, cidx])
-        ? Cell.fromColor(player.color)
+        ? Cell.fromColor(color)
         : cell;
     });
   }
 
-  calcPlaceableCells (player: Player): number {
+  calcPlaceableCells (color: DiskColors): number {
     let cellsToPlace = 0;
     this.mapCells((cell: Cell, ridx: number, cidx: number) => {
-      if (this.checkIfPlaceable([ridx, cidx], player)) {
+      if (this.checkIfPlaceable([ridx, cidx], color)) {
         cellsToPlace += 1;
       }
       return cell;
@@ -134,7 +133,7 @@ export class Board {
 
   private computeCoordsToBeTurned (
     currentCoords: CellCoordinates,
-    player: Player
+    color: DiskColors
   ): CellCoordinates[] {
     const availableDirectionCoords = this.getAvailableDirectionCoords(currentCoords);
 
@@ -142,18 +141,17 @@ export class Board {
       const candidateCoords = this.getCandidateCoords(currentCoords, cds);
 
       if (candidateCoords.length < 2) return accum;
-      if (this.getCellAt(candidateCoords[0]).color === player.color) return accum;
+      if (this.getCellAt(candidateCoords[0]).color === color) return accum;
 
       const coordsToCommit: CellCoordinates[] = [candidateCoords[0]];
 
       _.forEach(candidateCoords.slice(1), (cds: CellCoordinates) => {
         const cell = this.getCellAt(cds);
-        if (cell.color === player.color) {
-          console.error(currentCoords, candidateCoords, coordsToCommit, cell.color, player.color);
+        if (cell.color === color) {
           _.forEach(coordsToCommit, (ctc: CellCoordinates) => accum.push(ctc));
           return false;
         }
-        else if (cell.color !== player.color) {
+        else if (cell.color !== color) {
           coordsToCommit.push(cds);
         }
         else {

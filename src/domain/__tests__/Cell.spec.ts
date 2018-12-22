@@ -1,5 +1,5 @@
-import { Cell, CellState } from "./Cell";
-import { DiskColors } from "./Disk";
+import { Cell, CellState } from "../Cell";
+import { DiskColors } from "../Disk";
 
 describe('Cell', () => {
   describe('static', () => {

@@ -1,5 +1,5 @@
-import { Player } from "./Player";
-import { DiskColors } from "./Disk";
+import { Player } from "../Player";
+import { DiskColors } from "../Disk";
 
 describe('Player', () => {
   describe('static', () => {

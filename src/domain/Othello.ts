@@ -46,13 +46,13 @@ export class Othello {
   }
 
   placeDisk (coords: CellCoordinates) {
-    this.board.placeDisk(coords, this.currentPlayer);
+    this.board.placeDisk(coords, this.currentPlayer.color);
     this.advanceCurrentPlayer();
   }
 
   checkGameStatus () {
     const boardStatus = this.board.getBoardStatus();
-    const placeableNumber = this.board.calcPlaceableCells(this.currentPlayer);
+    const placeableNumber = this.board.calcPlaceableCells(this.currentPlayer.color);
 
     if (boardStatus.Blank === 0) {
       this.gameStatus = GameStatus.FINISHED;

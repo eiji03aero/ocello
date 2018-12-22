@@ -1,4 +1,4 @@
-import { Disk, DiskColors } from "./Disk";
+import { Disk, DiskColors } from "../Disk";
 
 describe('Disk', () => {
   describe('static', () => {
