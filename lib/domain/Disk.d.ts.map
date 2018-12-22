@@ -1,0 +1,1 @@
+{"version":3,"file":"Disk.d.ts","sourceRoot":"","sources":["../../src/domain/Disk.ts"],"names":[],"mappings":"AAAA,oBAAY,UAAU;IACpB,KAAK,UAAU;IACf,KAAK,UAAU;CAChB;AAED,MAAM,WAAW,QAAQ;IACvB,KAAK,EAAE,UAAU,CAAC;CACnB;AAED,qBAAa,IAAI;IACf,KAAK,EAAE,UAAU,CAAC;gBAEL,IAAI,EAAE,QAAQ;IAI3B,MAAM,CAAC,KAAK;IAIZ,MAAM,CAAC,KAAK;CAGb"}

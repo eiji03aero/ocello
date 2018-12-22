@@ -1,0 +1,1 @@
+{"version":3,"file":"Board.d.ts","sourceRoot":"","sources":["../../src/components/Board.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAM/B,OAAO,EAAE,KAAK,IAAI,UAAU,EAAY,MAAM,iBAAiB,CAAC;AAmBhE,MAAM,WAAW,KAAK;IACpB,KAAK,EAAE,UAAU,CAAC;CACnB;AAED,eAAO,MAAM,KAAK,EAAE,KAAK,CAAC,GAAG,CAAC,KAAK,CAclC,CAAA"}

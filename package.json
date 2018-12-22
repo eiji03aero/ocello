@@ -1,15 +1,19 @@
 {
   "name": "othello",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./lib/OthelloApp.js",
   "repository": "https://github.com/eiji03aero/othello",
   "license": "MIT",
   "scripts": {
     "dev": "./node_modules/.bin/webpack-dev-server --config ./webpack.dev.config.js --progress --color",
     "build:dev": "./node_modules/.bin/webpack --config ./webpack.dev.config.js --progress --color",
+    "build:product": "rm -rf ./lib && ./node_modules/.bin/tsc",
     "test": "./node_modules/.bin/jest",
     "test:watch": "./node_modules/.bin/jest --watch"
   },
+  "files": [
+    "lib/**/*"
+  ],
   "dependencies": {
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
