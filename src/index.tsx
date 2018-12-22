@@ -5,7 +5,7 @@ import AppLocator from "./AppLocator";
 import { appStoreGroup } from "./store/AppStoreGroup";
 import { InitializeAppUseCase } from "./usecase/Initials/InitializeAppUseCase";
 
-import { App } from "./app";
+import { App } from "./App";
 
 interface Props { }
 interface State {
