@@ -8,7 +8,7 @@ const pathResolver = pathName => path.resolve(__dirname, pathName);
 module.exports = merge(commonConfig, {
   mode: 'development',
   entry: [
-    pathResolver('src/index.tsx'),
+    pathResolver('src/index.dev.tsx'),
   ],
   output: {
     path: pathResolver('dist'),

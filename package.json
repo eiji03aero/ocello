@@ -1,7 +1,11 @@
 {
   "name": "othello",
   "version": "1.0.0",
-  "main": "./lib/OthelloApp.js",
+  "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
+  "types": "lib/index.d.ts",
   "repository": "https://github.com/eiji03aero/othello",
   "license": "MIT",
   "scripts": {
@@ -11,9 +15,6 @@
     "test": "./node_modules/.bin/jest",
     "test:watch": "./node_modules/.bin/jest --watch"
   },
-  "files": [
-    "lib/**/*"
-  ],
   "dependencies": {
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
