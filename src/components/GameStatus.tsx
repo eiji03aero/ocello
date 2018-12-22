@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 import { Player } from "../domain/Player";
+import { GameStatus as GameStatusEnum } from "../domain/Othello";
 import { BoardStatus } from "../domain/Board";
 import { colors } from "../utils/colors";
 
@@ -22,15 +23,17 @@ const GameStatusStyled = styled.div`
 export interface Props {
   currentPlayer: Player;
   boardStatus: BoardStatus;
-  canSkip: boolean;
+  gameStatus: GameStatusEnum;
   onSkipTurn: (e: React.SyntheticEvent) => void;
+  onNewGame: (e: React.SyntheticEvent) => void;
 }
 
 export const GameStatus: React.SFC<Props> = ({
   currentPlayer,
   boardStatus,
-  canSkip,
+  gameStatus,
   onSkipTurn,
+  onNewGame,
 }: Props) => {
   return (
     <GameStatusStyled>
@@ -46,11 +49,15 @@ export const GameStatus: React.SFC<Props> = ({
       <span className="box">
         Blank: {boardStatus.Blank}
       </span>
-      { canSkip && (
-        <button onClick={onSkipTurn}>
-          Skip turn
-        </button>
-      )}
+      <button onClick={onNewGame}>
+        New game
+      </button>
+      <button
+        onClick={onSkipTurn}
+        disabled={!( gameStatus === GameStatusEnum.CANT_PLACE )}
+      >
+        Skip turn
+      </button>
     </GameStatusStyled>
   );
 };

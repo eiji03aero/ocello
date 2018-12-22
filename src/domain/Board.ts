@@ -22,9 +22,9 @@ export class Board {
   static NewGame () { return new Board({ cells: this.newGameCells }); }
   static Random () { return new Board({ cells: this.randomCells }); }
 
-  readonly LowerEnd = 0;
-  readonly HigherEnd = 7;
-  readonly AroundCoords: CellCoordinates[] = [
+  static readonly LowerEnd = 0;
+  static readonly HigherEnd = 7;
+  static readonly AroundCoords: CellCoordinates[] = [
     [-1, -1], [-1, 0], [-1, 1],
     [0, -1], [0, 1],
     [1, -1], [1, 0], [1, 1],
@@ -57,14 +57,16 @@ export class Board {
     });
   }
 
-  canPlayerPlaceDisk (player: Player) {
-    let cellToPlace = 0;
+  calcPlaceableCells (player: Player): number {
+    let cellsToPlace = 0;
     this.mapCells((cell: Cell, ridx: number, cidx: number) => {
-      if (this.checkIfPlaceable([ridx, cidx], player)) cellToPlace += 1;
+      if (this.checkIfPlaceable([ridx, cidx], player)) {
+        cellsToPlace += 1;
+      }
       return cell;
     });
 
-    return cellToPlace > 0;
+    return cellsToPlace;
   }
 
   getBoardStatus () {
@@ -116,15 +118,15 @@ export class Board {
 
   private isValidCoord (coords: CellCoordinates): boolean {
     return (
-      coords[0] >= this.LowerEnd &&
-      coords[1] >= this.LowerEnd &&
-      coords[0] <= this.HigherEnd &&
-      coords[1] <= this.HigherEnd
+      coords[0] >= Board.LowerEnd &&
+      coords[1] >= Board.LowerEnd &&
+      coords[0] <= Board.HigherEnd &&
+      coords[1] <= Board.HigherEnd
     );
   }
 
   private getAvailableDirectionCoords (coords: CellCoordinates) {
-    return _.filter(this.AroundCoords, (ac: CellCoordinates) => {
+    return _.filter(Board.AroundCoords, (ac: CellCoordinates) => {
       const tryCoordinates = [coords[0] + ac[0], coords[1] + ac[1]];
       return this.isValidCoord(tryCoordinates);
     });
@@ -198,7 +200,7 @@ export class Board {
       return (
         (ridx === 3 && cidx === 3) ? Cell.Black() :
         (ridx === 4 && cidx === 4) ? Cell.Black() :
-        (ridx === 3 && cidx === 4) ? Cell.Black() :
+        (ridx === 3 && cidx === 4) ? Cell.White() :
         (ridx === 4 && cidx === 3) ? Cell.White() :
         Cell.Blank()
       );
@@ -217,8 +219,8 @@ export class Board {
   }
 
   private static buildCells (func: (ri: number, ci: number) => Cell): BoardCells {
-    return new Array(8).fill(0).map((row, ridx) => {
-      return new Array(8).fill(0).map((col, cidx) => {
+    return _.map(_.fill(new Array(8), 0), (row, ridx) => {
+      return _.map(_.fill(new Array(8), 0), (col, cidx) => {
         return func(ridx, cidx);
       });
     });

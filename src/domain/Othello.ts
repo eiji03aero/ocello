@@ -3,6 +3,8 @@ import { Player } from "./Player";
 
 export enum GameStatus {
   PLAYING,
+  CANT_PLACE,
+  IMPOSSIBLE,
   FINISHED,
 }
 
@@ -48,13 +50,33 @@ export class Othello {
     this.advanceCurrentPlayer();
   }
 
-  canPlayerPlaceDisk () {
-    return this.board.canPlayerPlaceDisk(this.currentPlayer);
+  checkGameStatus () {
+    const boardStatus = this.board.getBoardStatus();
+    const placeableNumber = this.board.calcPlaceableCells(this.currentPlayer);
+
+    if (boardStatus.Blank === 0) {
+      this.gameStatus = GameStatus.FINISHED;
+    }
+    else if (placeableNumber === 0 ) {
+      if (boardStatus[this.currentPlayer.color] === 0) {
+        this.gameStatus = GameStatus.IMPOSSIBLE;
+      } else {
+        this.gameStatus = GameStatus.CANT_PLACE;
+      }
+    }
+    else {
+      this.gameStatus = GameStatus.PLAYING;
+    }
   }
 
   skipTurn () {
     this.advanceCurrentPlayer();
   }
+
+  get isPlaying () { return this.gameStatus === GameStatus.PLAYING; }
+  get isImpossible () { return this.gameStatus === GameStatus.IMPOSSIBLE; }
+  get isCantPlace () { return this.gameStatus === GameStatus.CANT_PLACE; }
+  get isFinished () { return this.gameStatus === GameStatus.FINISHED; }
 
   /* -------------------- Private methods -------------------- */
   private advanceCurrentPlayer () {

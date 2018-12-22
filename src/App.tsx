@@ -52,7 +52,7 @@ export class App extends React.Component<Props, State> {
       board,
       currentPlayer,
       boardStatus,
-      canSkip,
+      gameStatus,
     } = this.state.othello;
 
     const {
@@ -68,7 +68,7 @@ export class App extends React.Component<Props, State> {
           <GameStatusContainer
             currentPlayer={currentPlayer}
             boardStatus={boardStatus}
-            canSkip={canSkip}
+            gameStatus={gameStatus}
           />
         </div>
         <div className="side">
