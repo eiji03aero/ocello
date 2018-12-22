@@ -16,6 +16,7 @@
     "test:watch": "./node_modules/.bin/jest --watch"
   },
   "dependencies": {
+    "almin": "^0.18.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "styled-components": "^4.1.2",
@@ -35,7 +36,6 @@
     "@types/react": "^16.7.13",
     "@types/react-dom": "^16.0.11",
     "@types/styled-components": "^4.1.2",
-    "almin": "^0.18.1",
     "almin-logger": "^6.2.3",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.4",
